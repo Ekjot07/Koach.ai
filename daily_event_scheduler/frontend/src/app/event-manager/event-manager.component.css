@@ -1,0 +1,67 @@
+/* Apply dark theme to the entire page */
+body {
+    background-color: #343a40; /* Dark background for the whole page */
+    color: #f8f9fa; /* Light text color */
+    min-height: 100vh; /* Ensure full height */
+}
+
+/* Container styling */
+.container {
+    background-color: #495057; /* Darker container background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+    padding: 20px; /* Inner padding */
+    color: #f8f9fa;
+}
+
+.form-group {
+    display: flex;
+    align-items: center; /* Align label and input on the same line */
+    margin-bottom: 15px; /* Add space between form groups */
+}
+
+.form-group label {
+    width: 150px; /* Fixed width to align labels */
+}
+
+.form-group input {
+    width: 100px; /* Fixed width to align labels */
+}
+
+.form-control {
+    width: auto;
+    max-width: 200px; /* Ensure input fields don’t span full width */
+}
+
+form {
+    padding: 20px; /* Add padding around the form */
+}
+
+/* Headings */
+h1, h2 {
+    margin-bottom: 20px; /* Space between headings */
+}
+
+/* Dark theme for buttons */
+.btn-dark {
+    background-color: #6c757d; /* Dark button color */
+    border-color: #6c757d; /* Border color */
+}
+
+.btn-dark:hover {
+    background-color: #5a6268; /* Darker shade on hover */
+}
+
+/* Error messages */
+.alert-danger {
+    background-color: #dc3545; /* Red background for error messages */
+    color: #fff; /* White text for error messages */
+    width: 250px;
+    padding: 10px;
+}
+
+/* Dark theme for list items */
+.list-group-item {
+    background-color: #495057; /* Background for list items */
+    border: none; /* No border for list items */
+}

@@ -2,6 +2,7 @@ package scheduler
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/Ekjot07/Koach.ai/daily_event_scheduler/backend/internal/scheduler"
@@ -33,17 +34,21 @@ func (s *SchedulerService) GetEvents() []domains.Event {
 
 // Handle get and post requests and call corresponding function
 func (s *SchedulerService) Router(w http.ResponseWriter, r *http.Request) {
+	enableCORS(&w)
 	switch r.Method {
+	case http.MethodOptions:
+		w.WriteHeader(http.StatusOK)
 	case http.MethodPost:
 		var event domains.Event
 		json.NewDecoder(r.Body).Decode(&event)
+		fmt.Printf("Received event: %+v\n", event)
 		success := s.AddEvent(event)
 		if success {
 			w.WriteHeader(http.StatusOK)
-			w.Write([]byte("Event added successfully"))
+			json.NewEncoder(w).Encode(map[string]string{"message": "Event added successfully"})
 		} else {
 			w.WriteHeader(http.StatusConflict)
-			w.Write([]byte("Invalid Input or Event overlap, cannot add event"))
+			json.NewEncoder(w).Encode(map[string]string{"error": "Event overlap, cannot add event"})
 		}
 	case http.MethodGet:
 		events := s.GetEvents()
@@ -51,4 +56,10 @@ func (s *SchedulerService) Router(w http.ResponseWriter, r *http.Request) {
 	default:
 		w.WriteHeader(http.StatusMethodNotAllowed)
 	}
+}
+
+func enableCORS(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
+	(*w).Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+	(*w).Header().Set("Access-Control-Allow-Headers", "Content-Type")
 }
