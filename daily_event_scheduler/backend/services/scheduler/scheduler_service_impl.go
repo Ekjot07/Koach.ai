@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/Ekjot07/Koach.ai/daily_event_scheduler/backend/internal/middleware"
 	"github.com/Ekjot07/Koach.ai/daily_event_scheduler/backend/internal/scheduler"
 	"github.com/Ekjot07/Koach.ai/daily_event_scheduler/backend/services/domains"
 	"github.com/Ekjot07/Koach.ai/daily_event_scheduler/backend/services/mappers"
+	"github.com/Ekjot07/Koach.ai/daily_event_scheduler/backend/services/middleware"
 )
 
 // Concrete Implementation of our Scheduler endpoint
