@@ -27,8 +27,31 @@ export class EventManagerComponent implements OnInit {
     });
   }
 
+  // Validate the input before adding event
+  validateInput(): boolean {
+    // Ensure start_time and end_time are within [0, 23]
+    if (this.newEvent.start_time < 0 || this.newEvent.start_time > 23 || this.newEvent.end_time < 0 || this.newEvent.end_time > 23) {
+      this.errorMessage = 'Start time and End Time must be between 0 and 23.';
+      return false;
+    }
+
+    // Ensure start_time is not greater than end_time
+    if (this.newEvent.start_time > this.newEvent.end_time) {
+      this.errorMessage = 'Start time cannot be greater than end time.';
+      return false;
+    }
+
+    // Clear error message if everything is valid
+    this.errorMessage = '';
+    return true;
+  }
+
   // Add new event
   addEvent() {
+    if (!this.validateInput()) {
+      return; // If input is invalid, stop the request
+    }
+
     this.eventService.addEvent(this.newEvent).subscribe({
       next: () => {
         this.loadEvents(); // Call loadEvents to fetch updated events after adding
@@ -38,11 +61,7 @@ export class EventManagerComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error adding event:', err);
-        if (err.error && err.error.error) {
-          this.errorMessage = err.error.error; // Display error from backend if available
-        } else {
-            this.errorMessage = 'An unknown error occurred'; // Fallback error message
-        }
+        this.errorMessage = err.error?.error || 'An unknown error occurred'; // Fallback error message
       }
     });
   }

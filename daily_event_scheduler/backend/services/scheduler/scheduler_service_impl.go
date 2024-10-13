@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/Ekjot07/Koach.ai/daily_event_scheduler/backend/internal/middleware"
 	"github.com/Ekjot07/Koach.ai/daily_event_scheduler/backend/internal/scheduler"
 	"github.com/Ekjot07/Koach.ai/daily_event_scheduler/backend/services/domains"
 	"github.com/Ekjot07/Koach.ai/daily_event_scheduler/backend/services/mappers"
@@ -34,7 +35,7 @@ func (s *SchedulerService) GetEvents() []domains.Event {
 
 // Handle get and post requests and call corresponding function
 func (s *SchedulerService) Router(w http.ResponseWriter, r *http.Request) {
-	enableCORS(&w)
+	middleware.EnableCORS(&w)
 	switch r.Method {
 	case http.MethodOptions:
 		w.WriteHeader(http.StatusOK)
@@ -56,10 +57,4 @@ func (s *SchedulerService) Router(w http.ResponseWriter, r *http.Request) {
 	default:
 		w.WriteHeader(http.StatusMethodNotAllowed)
 	}
-}
-
-func enableCORS(w *http.ResponseWriter) {
-	(*w).Header().Set("Access-Control-Allow-Origin", "*")
-	(*w).Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-	(*w).Header().Set("Access-Control-Allow-Headers", "Content-Type")
 }
