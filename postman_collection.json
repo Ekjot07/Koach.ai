@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "5ee2f3eb-14b0-45d1-b411-57a06d7fbed9",
+		"name": "Koach.ai",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37897250"
+	},
+	"item": [
+		{
+			"name": "daily_event_scheduler",
+			"item": [
+				{
+					"name": "Get Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/events",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Event",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"start_time\": 10,\r\n    \"end_time\": 11\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/events",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"events"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "aws_lambda_s3_api",
+			"item": [
+				{
+					"name": "GetAllData",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://zndy8vkrqc.execute-api.ap-south-1.amazonaws.com/get-json",
+							"protocol": "https",
+							"host": [
+								"zndy8vkrqc",
+								"execute-api",
+								"ap-south-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"get-json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewData",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Srinivas\",\r\n    \"age\": \"22\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://zndy8vkrqc.execute-api.ap-south-1.amazonaws.com/store-json",
+							"protocol": "https",
+							"host": [
+								"zndy8vkrqc",
+								"execute-api",
+								"ap-south-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"store-json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
