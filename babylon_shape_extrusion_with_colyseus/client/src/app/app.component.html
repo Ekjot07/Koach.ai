@@ -1,0 +1,10 @@
+<div class="container">
+  <!-- 2D Drawing Canvas -->
+  <h3>Draw a closed Shape</h3>
+  <canvas #drawingCanvas width="400" height="400" class="drawing-canvas"></canvas>
+  <button (click)="extrudeShape()">Extrude</button>
+
+  <!-- 3D Scene for Extruded Shape -->
+  <h3>3D Extruded Shape</h3>
+  <canvas #babylonCanvas width="800" height="600" class="babylon-canvas"></canvas>
+</div>

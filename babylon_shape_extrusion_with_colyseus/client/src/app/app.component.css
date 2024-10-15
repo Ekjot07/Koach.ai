@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .drawing-canvas {
+    border: 1px solid #000;
+    cursor: crosshair;
+    margin-bottom: 20px;
+  }
+  
+  .babylon-canvas {
+    border: 1px solid #000;
+  }
+  
